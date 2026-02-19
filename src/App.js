@@ -9,11 +9,11 @@ import { users } from './data/users';
 
 // Hooks
 import { useArtistCarousel } from './hooks/useArtistCarousel';
-import { useScroll } from './hooks/useScroll';
+// import { useScroll } from './hooks/useScroll';
 
 const App = () => {
 	// Custom Hooks
-	const isScrolled = useScroll(50);
+	// const isScrolled = useScroll(50);
 	const { activeId, direction, handleMouseEnter, setActiveId } = useArtistCarousel(users);
 
 	return (
