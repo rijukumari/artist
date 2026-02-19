@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Components
+import ArtistShowcase from './components/ArtistShowcase';
+
+// Data
+import { users } from './data/users';
+
+// Hooks
+import { useArtistCarousel } from './hooks/useArtistCarousel';
+import { useScroll } from './hooks/useScroll';
+
+const App = () => {
+	// Custom Hooks
+	const isScrolled = useScroll(50);
+	const { activeId, direction, handleMouseEnter, setActiveId } = useArtistCarousel(users);
+
+	return (
+		<div className="relative min-h-screen bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black">
+			<ArtistShowcase
+				users={users}
+				activeId={activeId}
+				direction={direction}
+				handleMouseEnter={handleMouseEnter}
+				setActiveId={setActiveId}
+			/>
+		</div>
+	);
+};
 
 export default App;
